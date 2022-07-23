@@ -1,3 +1,5 @@
+
+import App from "./components/App"
 console.log('Hello from JS!')
 
 
@@ -18,17 +20,9 @@ console.log('Hello from JS!')
 
 
 
-//creating Myh1 component
-const Myh1 = ()=>{
-    return React.createElement("h1",{},"This is from REACT H1 component")
-}
 
-// using Myh1 component in App
 
-const App=()=>{
 
-    return React.createElement("div",{},[Myh1(),Myh1(),Myh1(),Myh1()]) //passing in array
 
-}
 
 ReactDOM.render(App(), document.querySelector("#root"))

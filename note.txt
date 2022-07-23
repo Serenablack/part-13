@@ -1,0 +1,17 @@
+1. single page application: How js provide this features
+2. What is react? why react? large webpages is combination of small webpages lnown as components
+each component is HtmL tag. However, they are supercharged than html tag
+
+a. it becomes easier while debugging.
+b. reduce code repetation.
+
+3.Debugger Tool inspect garne browser ma, (Network tab and its features)
+
+chrome extension: react developer tools
+//JS tools
+
+4. npm init -y
+//install parcel
+a. latest js code lai browserle bujhne code ma convert garne different package hunxa. one of them is parcel
+//browserlist vaneko kun kun browser ani kun version ko browser ma convert garxa.
+https://browserslist.dev/?q=bGFzdCAyIHZlcnNpb25z
