@@ -34,3 +34,8 @@ React grammer formatting
 //vs code lai react ko grammer thahahunna. SO, we use eslint. to download it 
 npm i -D eslint //paxi app distribution garne belako lagi chahinxa. So yo duitai method follow garnuparxa
 ani vscode ko extension bata download garnuparxa
+
+
+
+
+https://fullstackopen.com/en/part1/introduction_to_react#some-notes

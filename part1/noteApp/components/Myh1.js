@@ -1,12 +1,22 @@
 import React from "react";
 
 //creating Myh1 component
-const Myh1 = () => {
+// const Myh1 = (props) => {
+const Myh1 = ({ name, lastName }) => {
+  //   newName = `New Name is ${props.name}`;//props is not defined
+
   //react component is ultimately the HTML tag.
   //   return React.createElement("h1", {}, "This is from REACT H1 component");
 
   //JSX is a technology in JS which allows us to write html code
-  return <h1>This is from H1 Component using JSX</h1>;
+  return (
+    <h1>
+      {/* Hi Tej Fellow {newName} {props.name} {props.lastName} */}
+      Hi Tej Fellow {name} {lastName}
+    </h1>
+  );
 };
+
+//props is an object and hence can be spread as{name , lastName}
 
 export default Myh1;
