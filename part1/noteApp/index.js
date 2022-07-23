@@ -27,7 +27,7 @@ const Myh1 = ()=>{
 
 const App=()=>{
 
-    return React.createElement("div",{},[Myh1(),Myh1(),Myh1(),Myh1()])
+    return React.createElement("div",{},[Myh1(),Myh1(),Myh1(),Myh1()]) //passing in array
 
 }
 
