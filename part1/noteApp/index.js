@@ -1,14 +1,11 @@
+import App from "./components/App";
+import ReactDOM from "react-dom/client";
 
-import App from "./components/App"
-console.log('Hello from JS!')
-
-
-
+console.log("Hello from JS!");
 
 //html ko root id vako div ma react id app rakhnu ko lagi:
 //method1
 // ReactDOM.render(React.createElement("div",{},"This is from REACT"),document.querySelector("#root"))
-
 
 //using function to create react app
 
@@ -18,11 +15,7 @@ console.log('Hello from JS!')
 
 // }
 
+//react 18 ma yo line le kam gardaina
+// ReactDOM.render(App(), document.querySelector("#root"));
 
-
-
-
-
-
-
-ReactDOM.render(App(), document.querySelector("#root"))
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
