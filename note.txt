@@ -39,3 +39,10 @@ ani vscode ko extension bata download garnuparxa
 
 
 https://fullstackopen.com/en/part1/introduction_to_react#some-notes
+
+
+
+//manual render calling react.render twice. calling a function twice, using setinterval to call function eversecond
+
+//react state: It is not possible to refresh page everysecond using manual rendering. so react provide a feature of State
+
