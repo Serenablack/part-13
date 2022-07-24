@@ -1,16 +1,32 @@
 import { useState } from "react";
+import Mybutton from "./Mybutton";
+import StatisticLine from "./StatisticLine";
 
 const Statistic = (props) => {
   if (props.ifButtonClicked > 0) {
     return (
-      <div>
-        <p> Good {props.good}</p>
-        <p> Neutral {props.neutral}</p>
-        <p> Bad {props.bad}</p>
-        <p>all {props.sum} </p>
-        <p> average {props.average}</p>
-        <p> positive {props.positive}%</p>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <StatisticLine text="Good" value={props.good} />
+          </tr>
+          <tr>
+            <StatisticLine text="Neutral" value={props.neutral} />
+          </tr>
+          <tr>
+            <StatisticLine text="Bad" value={props.bad} />
+          </tr>
+          <tr>
+            <StatisticLine text="All" value={props.all} />
+          </tr>
+          <tr>
+            <StatisticLine text="Average" value={props.average} />
+          </tr>
+          <tr>
+            <StatisticLine text="Positive" value={props.positive} symbol="%" />
+          </tr>
+        </tbody>
+      </table>
     );
   } else return <h4>No feedback given</h4>;
 };
@@ -41,9 +57,10 @@ const App = () => {
   return (
     <div>
       <h1>Give Feedback</h1>
-      <button onClick={btnGood}>good</button>
-      <button onClick={btnNeutral}>neutral</button>
-      <button onClick={btnBad}>bad</button>
+      <Mybutton click={btnGood} text="Good" />
+      <Mybutton click={btnNeutral} text="Neutral" />
+      <Mybutton click={btnBad} text="Bad" />
+
       <h1>Statistic</h1>
       <Statistic
         good={good}
