@@ -4,25 +4,35 @@ import Header from "./Header";
 
 const App = () => {
   const course = "Half Stack application development";
-  const part1 = "Fundamentals of React";
-  const exercises1 = 10;
-  const part2 = "Using props to pass data";
-  const exercises2 = 7;
-  const part3 = "State of a component";
-  const exercises3 = 14;
+  const part1 = {
+    name: "Fundamentals of React",
+    exercises: 10,
+  };
+  const part2 = {
+    name: "Using props to pass data",
+    exercises: 7,
+  };
+  const part3 = {
+    name: "State of a component",
+    exercises: 14,
+  };
 
   return (
     <div>
       <Header course={course} />
       <Content
-        partA={part1}
-        partB={part2}
-        partC={part3}
-        ex1={exercises1}
-        ex2={exercises2}
-        ex3={exercises3}
+        partA={part1.name}
+        partB={part2.name}
+        partC={part3.name}
+        ex1={part1.exercises}
+        ex2={part2.exercises}
+        ex3={part3.exercises}
       />
-      <Total ex1={exercises1} ex2={exercises2} ex3={exercises3} />
+      <Total
+        ex1={part1.exercises}
+        ex2={part2.exercises}
+        ex3={part3.exercises}
+      />
     </div>
   );
 };
