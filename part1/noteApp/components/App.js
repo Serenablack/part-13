@@ -18,14 +18,11 @@ const App = ({ counter }) => {
 
   console.log("calling");
 
-  //array push vs concat
-  //state ma naya state set garda state lai mutate garnuhunna rather we need to create new object because react le state change vako
-  // ki nai vanerw === use gareko xa tesaile object lai remodify garda value change vayeta pani reference change hudaina so === gives
-  //false and hence state change hudaina
   const increaseCountApp = () => {
     setMyCount(myCount + 1);
-    setClickButtonHistory([...clickButtonHistry, "App"]);
-    //setClickButtonHistory(1,2,3,4, "App");//if clickButtonHistry = [1,2,3,4]
+    //state change vairaxa tara btnhistory display vako xaina...yo code le..
+    clickButtonHistry.push("App");
+    setClickButtonHistory(clickButtonHistry);
   };
   const increaseCountButton = () => {
     setMyCount(myCount + 1);

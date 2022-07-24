@@ -46,3 +46,26 @@ https://fullstackopen.com/en/part1/introduction_to_react#some-notes
 
 //react state: It is not possible to refresh page everysecond using manual rendering. so react provide a feature of State
 
+
+in react there are two type of components functional and class component
+
+till react16, functional component ma state rakhnu mildaina thyo so class component use garnu parthyoo
+
+//class component ma state banauda mostly object pass garthyo because duita value pass garesi duita state hunxa.
+ constructure ma ekchoti initialize hunxa so duita state banauna praye object use garthyoo
+
+
+ https://www.w3schools.com/react/react_class.asp
+
+
+
+ //debugging
+ react developer tool use garne  add chrome extension
+ inspect garesi thaha hunxa webpagema
+
+ //notes on hook
+ https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#rules-of-hooks
+
+ 1. donot define component inside component
+ 2. dont use state inside loop or condition
+ 3. hooks may be called from inside of a function body that defines a react component
