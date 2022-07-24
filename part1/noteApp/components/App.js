@@ -1,6 +1,8 @@
 import Myh1 from "./Myh1";
 import React from "react";
 import { useState } from "react";
+import Mybutton from "./Mybutton";
+import Display from "./Display";
 
 // using Myh1 component in App
 
@@ -12,19 +14,17 @@ const App = ({ counter }) => {
   //state ko value change hune bittikai entire component refresh hunxa
   const [myCount, setMyCount] = useState(1);
 
-  //setTime out function le harek second ma hole component call garxa
-  setTimeout(() => {
-    // let newCount = [1, 2, 3, 4, 5];//renders every second infinite times
-    //setmycount is a method
-    // setMyCount(newCount);
-    setMyCount(myCount + 1);
-  }, 1000);
+  console.log("calling");
 
+  const increaseCount = () => setMyCount(myCount + 1);
   let name1 = "Subash";
 
   return (
     <div>
+      <Display showValue={myCount} />
       <h1>{myCount}</h1>
+      <button onClick={increaseCount}> click me in same component</button>
+      <Mybutton buttonHandler={increaseCount} />
       <Myh1 name="Amir" count={myCount} />
       <Myh1 name={name1} lastName="Tamang" />
       <Myh1 name="Niru" />
