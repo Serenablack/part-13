@@ -1,4 +1,10 @@
-const Total = ({ ex1, ex2, ex3 }) => {
-  return <p>Number of exercises {ex1 + ex2 + ex3}</p>;
+const Total = ({ parts }) => {
+  console.log(parts);
+  return (
+    <p>
+      Number of exercises{" "}
+      {parts[0].exercises + parts[1].exercises + parts[2].exercises}
+    </p>
+  );
 };
 export default Total;

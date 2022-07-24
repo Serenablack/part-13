@@ -1,11 +1,14 @@
 import Part from "./Part";
 
-const Content = ({ partA, partB, partC, ex1, ex2, ex3 }) => {
+const Content = ({ parts }) => {
+  //   console.log(typeof parts); //parts is object while passing it was array
+  // console.log(parts[0].name);
+  // console.log(parts[0].exercises);
   return (
     <div>
-      <Part p1={partA} e1={ex1} />
-      <Part p1={partB} e1={ex2} />
-      <Part p1={partC} e1={ex3} />
+      <Part p1={parts[0].name} e1={parts[0].exercises} />
+      <Part p1={parts[1].name} e1={parts[1].exercises} />
+      <Part p1={parts[2].name} e1={parts[2].exercises} />
     </div>
   );
 };
