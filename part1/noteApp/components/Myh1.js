@@ -2,9 +2,10 @@ import React from "react";
 
 //creating Myh1 component
 // const Myh1 = (props) => {
-const Myh1 = ({ name, lastName }) => {
-  //   newName = `New Name is ${props.name}`;//props is not defined
 
+const Myh1 = ({ name, lastName, count }) => {
+  //   newName = `New Name is ${props.name}`;//props is not defined
+  console.log(name);
   //react component is ultimately the HTML tag.
   //   return React.createElement("h1", {}, "This is from REACT H1 component");
 
@@ -12,7 +13,7 @@ const Myh1 = ({ name, lastName }) => {
   return (
     <h1>
       {/* Hi Tej Fellow {newName} {props.name} {props.lastName} */}
-      Hi Tej Fellow {name} {lastName}
+      Hi Tej Fellow {name} {lastName} {count}
     </h1>
   );
 };
