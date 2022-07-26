@@ -1,5 +1,33 @@
 import { useState } from "react";
 
+
+
+
+
+
+const AnecdoteOfDay=({anecdotes,voteCount})=>{
+
+  const highestVote = Math.max(...voteCount);
+  const winnerAnecdote = voteCount.indexOf(highestVote);
+  const dayAnecdote = anecdotes[winnerAnecdote];
+
+  if(highestVote===0){
+    return (
+      <p>No vote Yet</p>
+    )
+  }
+
+  return(
+    <div>
+    <h4>{dayAnecdote}</h4>
+    <h4>has {highestVote} votes</h4>
+    </div>
+   
+  )
+
+}
+
+
 const App = () => {
   const anecdotes = [
     "If it hurts, do it more often.",
@@ -11,9 +39,39 @@ const App = () => {
     "Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.",
   ];
 
-  const [selected, setSelected] = useState(0);
+  const points = Array(7).fill(0);
 
-  return <div>{anecdotes[selected]}</div>;
+  const [selected, setSelected] = useState(0);
+  const [voteCount, setVoteCount] = useState(points);
+
+  const nextAnecdote = () => {
+    const random = Math.floor(Math.random() * anecdotes.length);
+
+    setSelected(random);
+
+  };
+
+  const increaseVote = () => {
+    const newVoteCount = [...voteCount];
+    newVoteCount[selected] += 1;
+    setVoteCount(newVoteCount);
+    console.log(voteCount)
+  };
+
+  return (
+    <div>
+      <h2>Anecdote of the day</h2>
+      <h4>{anecdotes[selected]}</h4>
+      <h4>has {voteCount[selected]} votes</h4>
+
+      <button onClick={increaseVote}>vote</button>
+
+      <button onClick={nextAnecdote}>next anecdote</button>
+
+      <h2>Anecdote with most votes</h2>
+      <AnecdoteOfDay anecdotes={anecdotes} voteCount={voteCount}></AnecdoteOfDay>
+    </div>
+  );
 };
 
 export default App;
