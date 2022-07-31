@@ -10,15 +10,24 @@ const App = () => {
 
 
   const addPerson =(event)=>{
-    event.preventDefault();
-    console.log(event.target)
 
-    const newPerson = {
-      name: newName,
-      
+    event.preventDefault();
+    // console.log(event.target)
+
+ 
+  
+    if(persons.some(person=>person.name===newName)){
+      alert(`${newName} is already added to phonebook`)
     }
-    setPersons([...persons,newPerson]);
-    setNewName('');
+    else{
+      const newPerson = {
+        name: newName,
+        
+      }
+      setPersons([...persons,newPerson]);
+      setNewName('');
+    }
+ 
  
  
   }
@@ -38,12 +47,13 @@ const App = () => {
 
       <h2>Phonebook</h2>
       <form onSubmit={addPerson} >
+    
       <div>
         Name :   <input placeholder="Please Enter Name" value={newName} onChange={handleOnChange}/>
       </div><br />
       <button>Add Name</button>
       </form>
-
+  
       <h2>Phone Number</h2>
       {
         persons.map(frn=>
@@ -52,7 +62,7 @@ const App = () => {
       }
       
 
-
+{/* {console.log(persons)} */}
 
     </div>
   )
