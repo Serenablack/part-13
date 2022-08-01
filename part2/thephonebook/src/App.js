@@ -1,5 +1,8 @@
+import { Filter } from './components/Filter';
+import { PersonForm } from './components/PersonForm';
 import { useState } from "react";
-import Person from "./components/Person";
+import Person from './components/Person';
+
 
 
 const App = () => {
@@ -64,30 +67,18 @@ let filteredname = persons.filter((person)=>person.name.includes(filter));
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-          Filter :<input  value={filter}   onChange={handleOnChangeFilter} type="text"  />
-        </div>
-      <form onSubmit={addPerson}>
-    
-        <div>
-          Name : <input placeholder="Please Enter Name" value={newName} onChange={handleOnChangeName} />
-        </div>
-        <div>
-          Number :<input placeholder="Please Enter Number"  value={phoneNumber}   onChange={handleOnChangeNumber} type="number"  />
-        </div>
-        <button type="submit">Add Contact</button>
-      </form>
+     <Filter   filter={filter} handleOnChangeFilter={handleOnChangeFilter}  />
+     <h2>Add New Contact</h2>
+     <PersonForm   addPerson={addPerson} newName={newName} handleOnChangeName={handleOnChangeName} phoneNumber={phoneNumber} handleOnChangeNumber={handleOnChangeNumber}  />
 
       <h2>Phone Numbers</h2>
-     
-      {filteredname.map((person,index) => {
-       return(
-        <Person key={index} person={person}> </Person>
-       )
-      })}
+
+    <Person filteredname={filteredname}></Person>
     </div>
   );
 
 
 };
 export default App;
+
+  
