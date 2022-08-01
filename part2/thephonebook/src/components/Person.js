@@ -2,7 +2,9 @@ const Person =({person})=>{
 
 
     return (
-        <div>{person.name}</div>
+        <div>
+         <p> {`${person.name} ${person.number}`} </p>
+        </div>
     )
 }
 
