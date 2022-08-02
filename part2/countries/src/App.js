@@ -20,13 +20,23 @@ function App() {
 
   const findCountries = (event) => {
     // event.preventDefault();
+    // console.log(event.target.value)
     setSearchCountry(event.target.value);
-    let filterDesh=countryName.filter((country) =>
-    country.name.common.toLowerCase().includes(searchCountry)
-  );
-    setFilteredCountry(filterDesh);
-};
+    let filterDesh=countryName.filter((country) =>{
+      return(
 
+        country.name.common.toLowerCase().includes(event.target.value)
+      )
+  
+    // console.log(searchCountry)
+ 
+  })
+    setFilteredCountry(filterDesh);
+ 
+  }
+  
+ 
+  
 
   const showCountry=(event)=>{
   //  console.dir(event.target.previousSibling.innerHTML)
@@ -39,7 +49,7 @@ function App() {
   return (
     <div>
       <h2>
-        Find Countries{" "}
+        Find Countries
         <input type="text" value={searchCountry} onChange={findCountries} />
       </h2>
       {filteredCountry.length>10?<h3>Too many matches, specify another filter</h3>:filteredCountry.length===1?<DetailInfo country={filteredCountry[0]}/>:filteredCountry.map((country) => {
