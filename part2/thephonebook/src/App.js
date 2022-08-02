@@ -3,7 +3,9 @@ import { PersonForm } from "./components/PersonForm";
 import { useEffect, useState } from "react";
 import Person from "./components/Person";
 
-import axios from "axios";
+import db from "./services/phonebook";
+
+
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -13,9 +15,10 @@ const App = () => {
   //
   useEffect(() => {
     
-    axios.get("http://localhost:3001/persons").then((result) => {
-      setPersons(result.data);
-    });
+    db.getData().then(data=>{
+    setPersons(data)
+   })
+   
   
   }, [])
   
@@ -36,6 +39,7 @@ const App = () => {
     setFilter(filtname);
   };
 
+  console.log(persons)
   let filteredname = persons.filter((person) => person.name.includes(filter));
   // console.log(filteredname);
 
@@ -48,9 +52,18 @@ const App = () => {
       alert(`${newName} is already added to phonebook`);
     }
     else{
-      setPersons([...persons, { name: newName, number: phoneNumber }]);
-      setNewName("");
-      setPhoneNumber("");
+
+      // axios.post("http://localhost:3001/persons",{ name: newName, number: phoneNumber }).then(response=>{
+      //   // console.log(response.data)
+
+      db.postData({name:newName,number:phoneNumber}).then(data=>{
+        setPersons([...persons,data]);
+        setNewName("");
+        setPhoneNumber("");
+      })
+
+   
+  
     }
 
    
