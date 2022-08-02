@@ -43,9 +43,9 @@ function App() {
         <input type="text" value={searchCountry} onChange={findCountries} />
       </h2>
       {filteredCountry.length>10?<h3>Too many matches, specify another filter</h3>:filteredCountry.length===1?<DetailInfo country={filteredCountry[0]}/>:filteredCountry.map((country) => {
-        return <div>
-          <span key={country.cca2}>{country.name.common}</span>
-        <button key={country.cca3} onClick={showCountry}>show</button>
+        return <div key={country.cca2}>
+          <span >{country.name.common}</span>
+        <button  onClick={showCountry}>show</button>
         </div>
       })}
 

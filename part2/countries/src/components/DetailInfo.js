@@ -47,7 +47,7 @@ Object.keys(country.languages).map((language, i) => {
 <img src={country.flags.svg} alt="flags" style={{width:"180px", height: "150px"}}/>
 
 
-<h1>Weather in {country.name}</h1>
+<h1>Weather in {country.name.common}</h1>
       <h4> Temperature {temperature} Degree Celcius</h4>
       <img
         src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
