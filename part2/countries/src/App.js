@@ -26,6 +26,8 @@ function App() {
       return(
 
         country.name.common.toLowerCase().includes(event.target.value)
+        // country.name.common.toLowerCase().includes(countryName)
+        //useState is asynchronous function call so it next time render vako karan le issue aairathyoo ya
       )
   
     // console.log(searchCountry)
