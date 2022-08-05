@@ -1,11 +1,15 @@
-const Person =({filteredname})=>{
+const Person =({filteredname,displayMessage})=>{
 
-
+// const displayMessage=()=>alert('are u sure want to delete??')
     return (
         <div>
             {filteredname.map((person,index) => {
             return(
-             <h3 key={index} ><p> {`${person.name} ${person.number}`} </p> </h3>
+                <div key={index}>
+                 <span  >{`${person.name} ${person.number}`}  </span>
+                 <button name={person.id} onClick={displayMessage}>delete</button>
+                </div>
+         
             )
            })}
         </div>

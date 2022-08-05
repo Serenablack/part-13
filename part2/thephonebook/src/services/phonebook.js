@@ -13,7 +13,7 @@ const getData = ()=>{
 
 
 const postData = (contactInfo)=>{
-    console.log(contactInfo);
+  
 
     return (
  
@@ -23,5 +23,21 @@ const postData = (contactInfo)=>{
     )
 }
 
+const deleteData = (id)=>{
+return(
+    axios.delete(`http://localhost:3001/persons/${id}`).then((response=>{
+        console.log('COntact deleted')
+    }))
+)
+}
 
-export default {getData,postData};
+const updateData=(id)=>{
+    return (
+        axios.delete(`http://localhost:3001/persons/${id}`).then((response=>{
+            return response.data;
+        }))
+    )
+}
+
+
+export default {getData,postData,deleteData,updateData};

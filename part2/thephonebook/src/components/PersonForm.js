@@ -8,11 +8,11 @@ export function PersonForm({
 }) {
   return <form onSubmit={addPerson}>
     
-        <div>
-          Name : <input placeholder="Please Enter Name" value={newName} onChange={handleOnChangeName} />
+        <div >
+          Name : <input  placeholder="Please Enter Name" value={newName} onChange={handleOnChangeName} required />
         </div>
         <div>
-          Number :<input placeholder="Please Enter Number" value={phoneNumber} onChange={handleOnChangeNumber} type="number" />
+          Number :<input placeholder="Please Enter Number" value={phoneNumber} onChange={handleOnChangeNumber} required type="number" />
         </div>
         <button type="submit">Add Contact</button>
       </form>;
