@@ -6,7 +6,6 @@ import Person from "./components/Person";
 import db from "./services/phonebook";
 
 const App = () => {
-
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -35,42 +34,39 @@ const App = () => {
   };
 
   // console.log(persons);
-  let filteredname = persons.filter((person) => person.name.toLowerCase().includes(filter));
+  let filteredname = persons.filter((person) =>
+    person.name.toLowerCase().includes(filter)
+  );
   // console.log(filteredname);
 
   let naam = "";
-function getNameOnly (name){
+  function getNameOnly(name) {
+    let num = "0123456789";
 
-  let num = "0123456789";
- 
-
-  for (let i = 0; i < name.length; i++) {
-    if (num.includes(name[i])) {
-      break;
-    } else {
-      naam = naam + name[i];
+    for (let i = 0; i < name.length; i++) {
+      if (num.includes(name[i])) {
+        break;
+      } else {
+        naam = naam + name[i];
+      }
     }
+    return naam;
   }
-  return naam;
-}
-
 
   const displayMessage = (event) => {
     const name = event.target.previousSibling.innerText;
-    const id = Number(event.target.name)
+    const id = Number(event.target.name);
 
-    getNameOnly(name)
-    let message = window.confirm(`Are you Sure want to Delete ${getNameOnly(name)}`);
+    getNameOnly(name);
+    let message = window.confirm(
+      `Are you Sure want to Delete ${getNameOnly(name)}`
+    );
     if (message) {
-          db.deleteData(id).then((data)=>{
-       
-            let filteredArray= persons.filter(person=> person.id!==id)
-            setPersons(filteredArray);
-
-
-          })}
-
-   else {
+      db.deleteData(id).then((data) => {
+        let filteredArray = persons.filter((person) => person.id !== id);
+        setPersons(filteredArray);
+      });
+    } else {
       console.log("no");
     }
 
@@ -80,22 +76,36 @@ function getNameOnly (name){
     event.preventDefault();
     // console.log(event.target)
 
-    // const filterName = ()=> persons.some(Fname=>Fname.name===newName);
     if (persons.some((Pname) => Pname.name === newName)) {
-      alert(`${newName} is already added to phonebook`);
-    } else {
-      // axios.post("http://localhost:3001/persons",{ name: newName, number: phoneNumber }).then(response=>{
-      //   // console.log(response.data)
-      if(newName===''||phoneNumber===''){
-        alert("Fields cannot be Empty!!")
-      }else{
-        db.postData({ name: newName, number: phoneNumber }).then((data) => {
-          setPersons([...persons, data]);
-          setNewName("");
-          setPhoneNumber("");
-        });
+      let message = window.confirm(
+        `${newName} is already added to phonebook, would you like to Update.`
+      );
+      if (message) {
+        const x = persons.find((item) => item.name === newName);
+        // console.log(x);
+        let response = db.updateData(x.id, { ...x, number: phoneNumber });
+        // console.log(response);
+        response
+          .then((data) => {
+            console.log(data);
+            setPersons(persons.map((y) => (y.id !== x.id ? y : data)));
+            setNewName("");
+            setPhoneNumber("");
+          })
+          .catch((error) => {
+            alert("Data Update Failed");
+          });
       }
-  
+    } else {
+      db.postData({
+        name: newName,
+
+        number: phoneNumber,
+      }).then((data) => {
+        setPersons([...persons, data]);
+        setNewName("");
+        setPhoneNumber("");
+      });
     }
   };
 
