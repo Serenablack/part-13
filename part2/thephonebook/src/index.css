@@ -1,0 +1,5 @@
+.errorMsg{
+    border-style: solid;
+    border-color: red;
+    border-radius: 3px;
+}

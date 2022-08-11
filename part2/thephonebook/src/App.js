@@ -4,14 +4,17 @@ import { useEffect, useState } from "react";
 import Person from "./components/Person";
 
 import db from "./services/phonebook";
+import Notification from "./components/Notification";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [filter, setFilter] = useState("");
-  // const [count,setCount]=useState(0);
+  const [count, setCount] = useState(0);
   //
+  const [errorMsg, setErrorMsg] = useState(null);
+
   useEffect(() => {
     db.getData().then((data) => {
       setPersons(data);
@@ -57,19 +60,24 @@ const App = () => {
     const name = event.target.previousSibling.innerText;
     const id = Number(event.target.name);
 
-    getNameOnly(name);
     let message = window.confirm(
-      `Are you Sure want to Delete ${getNameOnly(name)}`
+      `Are you Sure want to Delete ${getNameOnly(name)} `
     );
     if (message) {
       db.deleteData(id).then((data) => {
         let filteredArray = persons.filter((person) => person.id !== id);
+        let x = persons.filter((x) => x.id === id);
+        // console.log(newPerson[0].name);
         setPersons(filteredArray);
+        setErrorMsg(`${x[0].name} has been deleted from the server`);
+        setCount(0);
+        setTimeout(() => {
+          setErrorMsg(null);
+        }, 2000);
       });
     } else {
       console.log("no");
     }
-
     // setFilteredCountry(filteredCountry.filter((country)=>country.name.common===countrry));
   };
   const addPerson = (event) => {
@@ -89,6 +97,7 @@ const App = () => {
           .then((data) => {
             console.log(data);
             setPersons(persons.map((y) => (y.id !== x.id ? y : data)));
+            setCount(1);
             setNewName("");
             setPhoneNumber("");
           })
@@ -103,6 +112,12 @@ const App = () => {
         number: phoneNumber,
       }).then((data) => {
         setPersons([...persons, data]);
+        setErrorMsg(`${newName} has been added`);
+        setCount(1);
+        setTimeout(() => {
+          setErrorMsg(null);
+        }, 2000);
+
         setNewName("");
         setPhoneNumber("");
       });
@@ -112,6 +127,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={errorMsg} value={count} />
       <Filter filter={filter} handleOnChangeFilter={handleOnChangeFilter} />
       <h2>Add New Contact</h2>
       <PersonForm

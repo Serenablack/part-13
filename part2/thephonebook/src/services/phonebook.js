@@ -14,8 +14,8 @@ const postData = (contactInfo) => {
 };
 
 const deleteData = (id) => {
-  return axios.delete(`${baseUrl}`).then((response) => {
-    console.log("COntact deleted");
+  return axios.delete(`${baseUrl}/${id}`).then((response) => {
+    return response.data;
   });
 };
 
