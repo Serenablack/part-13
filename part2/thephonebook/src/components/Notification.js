@@ -4,6 +4,7 @@ const Notification = ({ message, value }) => {
     borderStyle: "solid",
     borderColor: "red",
     borderRadius: "3px",
+    backgroundColor: "grey",
   };
 
   if (value === 1) {
@@ -11,6 +12,7 @@ const Notification = ({ message, value }) => {
       ...notificationstyle,
       color: "green",
       border: "solid 3px green",
+      backgroundColor: "grey",
     };
   }
   if (message === null) {

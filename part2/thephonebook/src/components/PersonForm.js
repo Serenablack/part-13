@@ -4,17 +4,30 @@ export function PersonForm({
   newName,
   handleOnChangeName,
   phoneNumber,
-  handleOnChangeNumber
+  handleOnChangeNumber,
 }) {
-  return <form onSubmit={addPerson}>
-    
-        <div >
-          Name : <input  placeholder="Please Enter Name" value={newName} onChange={handleOnChangeName} required />
-        </div>
-        <div>
-          Number :<input placeholder="Please Enter Number" value={phoneNumber} onChange={handleOnChangeNumber} required type="number" />
-        </div>
-        <button type="submit">Add Contact</button>
-      </form>;
+  return (
+    <form onSubmit={addPerson}>
+      <div>
+        Name :{" "}
+        <input
+          placeholder="Please Enter Name"
+          value={newName}
+          onChange={handleOnChangeName}
+          required
+        />
+      </div>
+      <div>
+        Number :
+        <input
+          placeholder="Please Enter Number"
+          value={phoneNumber}
+          onChange={handleOnChangeNumber}
+          required
+          type="text"
+        />
+      </div>
+      <button type="submit">Add Contact</button>
+    </form>
+  );
 }
-  
