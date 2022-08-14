@@ -1,9 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 const { response } = require("express");
+const morgan = require("morgan");
 
 const App = express();
 App.use(cors());
+// App.use(morgan("tiny"));
+App.use(
+  morgan("tiny", "/api/persons", (req, res) => {
+    const body = req.body;
+    console.log(body);
+    // return res.json(body);
+  })
+);
 
 App.use(express.json());
 
@@ -50,6 +59,10 @@ let phonebookEntries = [
   },
 ];
 
+App.get("/", (req, res) => {
+  res.end("Morgan Logger App");
+});
+
 App.get("/api/persons", (request, response) => {
   response.json(phonebookEntries);
 });
@@ -91,6 +104,7 @@ const generateId = () => {
 
 App.post("/api/persons/", (request, response) => {
   const body = request.body;
+  // console.log(body);
   const ifExits = phonebookEntries.some((item) => item.name === body.name);
   if (!body.name || !body.number)
     return response.status(400).json({
