@@ -126,7 +126,7 @@ const App = () => {
 
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h2>Heroku Phonebook</h2>
       <Notification message={errorMsg} value={count} />
       <Filter filter={filter} handleOnChangeFilter={handleOnChangeFilter} />
       <h2>Add New Contact</h2>
