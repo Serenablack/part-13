@@ -4,6 +4,8 @@ const { response } = require("express");
 const morgan = require("morgan");
 
 const App = express();
+
+App.use(express.static("build"));
 App.use(cors());
 // App.use(morgan("tiny"));
 App.use(
@@ -123,7 +125,7 @@ App.post("/api/persons/", (request, response) => {
   phonebookEntries = phonebookEntries.concat(contactDetails);
   response.json(phonebookEntries);
 });
-
-App.listen("3002", () => {
-  console.log("Phonebook server listening at port 3002");
+const PORT = process.env.PORT || "3002";
+App.listen(PORT, () => {
+  console.log(`Phonebook server listening at port ${PORT}`);
 });
