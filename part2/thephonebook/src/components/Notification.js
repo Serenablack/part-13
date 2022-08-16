@@ -1,5 +1,4 @@
 const Notification = ({ message, value }) => {
-  console.log(value);
   let notificationstyle = {
     borderStyle: "solid",
     borderColor: "red",

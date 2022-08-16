@@ -95,7 +95,7 @@ const App = () => {
         // console.log(response);
         response
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             setPersons(persons.map((y) => (y.id !== x.id ? y : data)));
             setCount(1);
             setNewName("");
