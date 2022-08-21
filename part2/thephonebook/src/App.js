@@ -2,7 +2,6 @@ import { Filter } from "./components/Filter";
 import { PersonForm } from "./components/PersonForm";
 import { useEffect, useState } from "react";
 import Person from "./components/Person";
-
 import db from "./services/phonebook";
 import Notification from "./components/Notification";
 
@@ -108,7 +107,6 @@ const App = () => {
     } else {
       db.postData({
         name: newName,
-
         number: phoneNumber,
       }).then((data) => {
         setPersons([...persons, data]);
