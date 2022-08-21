@@ -10,8 +10,7 @@ if (process.argv.length < 3) {
 
 // console.log(process.env.MONGO);
 
-const password = process.argv[2];
-const url = `mongodb+srv://SystemAdmin:${password}@cluster0.chgdrmp.mongodb.net/PhonebookSchema?retryWrites=true&w=majority`;
+const url = process.env.MONGODB_URI;
 
 const newName = process.argv[3];
 const newNum = process.argv[4];
