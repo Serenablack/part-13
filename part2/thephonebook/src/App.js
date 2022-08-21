@@ -110,17 +110,25 @@ const App = () => {
       db.postData({
         name: newName,
         number: phoneNumber,
-      }).then((data) => {
-        setPersons([...persons, data]);
-        setErrorMsg(`${newName} has been added`);
-        setCount(1);
-        setTimeout(() => {
-          setErrorMsg(null);
-        }, 2000);
+      })
+        .then((data) => {
+          setPersons([...persons, data]);
+          setErrorMsg(`${newName} has been added`);
+          setCount(1);
+          setTimeout(() => {
+            setErrorMsg(null);
+          }, 2000);
 
-        setNewName("");
-        setPhoneNumber("");
-      });
+          setNewName("");
+          setPhoneNumber("");
+        })
+        .catch((error) => {
+          setErrorMsg(error.response.data.error);
+          setCount(0);
+          setTimeout(() => {
+            setErrorMsg(null);
+          }, 2000);
+        });
     }
   };
 
