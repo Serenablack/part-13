@@ -55,12 +55,14 @@ const App = () => {
     return naam;
   }
 
-  const displayMessage = (event) => {
-    const name = event.target.previousSibling.innerText;
-    const id = Number(event.target.name);
-
+  const displayMessage = (id) => {
+    // const name = event.target.previousSibling.innerText;
+    // const id = Number(event.target.name);
+    const person = persons.find((x) => {
+      return id === x.id;
+    });
     let message = window.confirm(
-      `Are you Sure want to Delete ${getNameOnly(name)} `
+      `Are you Sure want to Delete ${getNameOnly(person.name)} `
     );
     if (message) {
       db.deleteData(id).then((data) => {

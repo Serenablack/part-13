@@ -14,18 +14,13 @@ const postData = (contactInfo) => {
 };
 
 const deleteData = (id) => {
+  console.log(id);
   return axios.delete(`${baseUrl}/${id}`).then((response) => {
     return response.data;
   });
 };
 
 // const updateData=(id,newObject)=>{
-//     return (
-//         axios.put(`${baseUrl}/${id}`,newObject).then((response=>{
-//             return response.data;
-//         }))
-//     )
-// }
 
 const updateData = (id, newObject) => {
   const request = axios.put(`${baseUrl}/${id}`, newObject);

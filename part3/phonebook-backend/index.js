@@ -45,7 +45,8 @@ App.get("/api/persons/:id", (request, response) => {
     });
 });
 
-App.delete("/api/persons/:id", (request, response) => {
+App.delete("/api/persons/:id", (request, response, next) => {
+  console.log(request.params.id);
   Person.findByIdAndRemove(request.params.id)
     .then((result) => {
       response.status(201).end();
@@ -67,7 +68,7 @@ App.get("/info", (request, response) => {
     `);
 });
 
-App.post("/api/persons/", (request, response) => {
+App.post("/api/persons/", (request, response, next) => {
   const body = request.body;
   const people = new Person({
     name: body.name,
