@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const { response } = require("express");
 const morgan = require("morgan");
 const Person = require("./models/person");
 
@@ -10,6 +9,7 @@ App.use(express.static("build"));
 App.use(cors());
 // App.use(morgan("tiny"));
 App.use(
+  //eslint-disable-next-line
   morgan("tiny", "/api/persons", (req, res) => {
     const body = req.body;
     console.log(body);
@@ -63,6 +63,7 @@ App.put("/api/persons/:id", (request, response, next) => {
 App.delete("/api/persons/:id", (request, response, next) => {
   console.log(request.params.id);
   Person.findByIdAndRemove(request.params.id)
+    //eslint-disable-next-line
     .then((result) => {
       response.status(201).end();
     })
@@ -108,6 +109,7 @@ const errorHandler = (error, request, response, next) => {
   next(error);
 };
 App.use(errorHandler);
+//eslint-disable-next-line
 const PORT = process.env.PORT || "3002";
 App.listen(PORT, () => {
   console.log(`Phonebook server listening at port ${PORT}`);
