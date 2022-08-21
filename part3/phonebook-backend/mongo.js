@@ -15,7 +15,6 @@ const url = `mongodb+srv://SystemAdmin:${password}@cluster0.chgdrmp.mongodb.net/
 
 const newName = process.argv[3];
 const newNum = process.argv[4];
-console.log(newNum, newName);
 
 const PhoneBookSchema = new mongoose.Schema({
   name: String,
@@ -28,28 +27,33 @@ mongoose
   .connect(url)
   .then((result) => {
     console.log("Successfully Connected!!");
-    const person = new Person({
-      name: newName,
-      number: newNum,
-    });
-
-    if (person.name === undefined || person.number === undefined) {
-    } else {
-      person.save();
-
-      return Person.find({});
-    }
-  })
-  .then((result) => {
-    if (process.argv.length > 3) {
-      return console.log(`added ${newName} ${newNum} to phonebook`);
-    } else if (process.argv.length === 3) {
-      result.forEach((item) => {
-        console.log(item);
-      });
-      mongoose.connection.close();
-    }
   })
   .catch((error) => {
-    console.log("No Internet Connection. Error: ", error);
+    console.log("Cannot connect to Internet..");
   });
+
+if (process.argv.length == 3) {
+  Person.find({})
+    .then((result) => {
+      console.log("Phonebook:");
+      result.forEach((item) => {
+        console.log(item.name + " " + item.number);
+        mongoose.connection.close();
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+} else {
+  const person = new Person({
+    name: newName,
+    number: newNum,
+  });
+  person
+    .save()
+    .then(console.log(`added ${newName} ${newNum} to phonebook`))
+    .catch((error) => {
+      console.log("Cannot added to DB..");
+      mongoose.connection.close();
+    });
+}
