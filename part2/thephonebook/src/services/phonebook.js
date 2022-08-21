@@ -14,7 +14,6 @@ const postData = (contactInfo) => {
 };
 
 const deleteData = (id) => {
-  console.log(id);
   return axios.delete(`${baseUrl}/${id}`).then((response) => {
     return response.data;
   });
@@ -25,9 +24,8 @@ const deleteData = (id) => {
 const updateData = (id, newObject) => {
   const request = axios.put(`${baseUrl}/${id}`, newObject);
   return request.then((response) => {
-    // console.log(response.data);
     return response.data;
   });
 };
-
+// eslint-disable-next-line
 export default { getData, postData, deleteData, updateData };
