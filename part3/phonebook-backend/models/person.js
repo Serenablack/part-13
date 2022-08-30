@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+//eslint-disable-next-line
 const url = process.env.MONGODB_URI;
 
 console.log("connecting to", url);
 
 mongoose
   .connect(url)
-  .then((result) => {
+  .then(() => {
     console.log("connected to MongoDB");
   })
   .catch((error) => {
@@ -22,18 +23,11 @@ const personSchema = new mongoose.Schema({
   },
   number: {
     type: String,
+    minLength: 8,
     validate: {
       validator: (num) => {
-        num = num.split("-");
-
-        if (
-          num.length === 2 &&
-          typeof Number(num[0]) === "number" &&
-          typeof Number(num[1]) === "number" &&
-          (num[0].length === 2 || num[0].length === 3)
-        ) {
+        if (num.split("-")[0].length === 2 || num.split("-")[0].length === 3)
           return true;
-        } else if (num.length === 1) return true;
         else return false;
       },
       message: (props) => `${props.value} is not a valid phone number!`,
