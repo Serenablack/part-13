@@ -8,15 +8,22 @@ const App = express();
 App.use(express.static("build"));
 App.use(cors());
 // App.use(morgan("tiny"));
+
 App.use(
   //eslint-disable-next-line
-  morgan("tiny", "/api/persons", (req, res) => {
-    const body = req.body;
-    console.log(body);
-    // return res.json(body);
+  morgan(function (tokens, req, res) {
+    return [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, "content-length"),
+      "-",
+      tokens["response-time"](req, res),
+      "ms",
+      JSON.stringify(req.body),
+    ].join(" ");
   })
 );
-
 App.use(express.json());
 
 App.get("/", (req, res) => {
