@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     },
   },
 });
-console.log("hey")
+
 class Note extends Model {}
 Note.init(
   {
@@ -40,22 +40,25 @@ Note.init(
   }
 );
 Note.sync();
+
 app.get("/api/notes", async (req, res) => {
   const notes = await Note.findAll();
+  console.log(JSON.stringify(notes, null, 2));
   res.json(notes);
 });
 
 app.get("/api/notes/:id", async (req, res) => {
   const note = await Note.findByPk(req.params.id);
-  console.log(note);
+
   if (note) {
+    console.log(note.toJSON());
     res.json(note);
   } else {
     res.status(404).end();
   }
 });
+
 app.put("/api/notes/:id", async (req, res) => {
-  console.log(req.params.id);
   const note = await Note.findByPk(req.params.id);
   if (note) {
     note.important = req.body.important;
@@ -65,11 +68,16 @@ app.put("/api/notes/:id", async (req, res) => {
     res.status(404).end();
   }
 });
+
 app.post("/api/notes", async (req, res) => {
-  console.log(req.body);
-  const note = await Note.create(req.body);
-  res.json(note);
+  try {
+    const note = await Note.create(req.body);
+    return res.json(note);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
 });
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
