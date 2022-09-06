@@ -12,6 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     },
   },
 });
+console.log("hey")
 class Note extends Model {}
 Note.init(
   {
