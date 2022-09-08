@@ -40,7 +40,7 @@ post http://localhost:3001/api/users
 content-type:application/json
 
 {
-    "username": "ge",
+    "username": "geo",
     "name": "12132",
     "password": "secret"
 }
@@ -49,13 +49,13 @@ post http://localhost:3001/api/login
 content-type:application/json
 
 {
-    "username": "ge",
+    "username": "geo",
     "password": "secret"
 }
 ###
 post http://localhost:3001/api/notes
 content-type:application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdlIiwiaWQiOjksImlhdCI6MTY2MjYzMTk0OX0.8UhYBnrcL6Q9_TsL6aMnmgZPPPshVYyveACwEgG9j2A
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdlbyIsImlkIjoyLCJpYXQiOjE2NjI2MzM3MDd9.lA5FEhqw89NiPOZ06lgmaAdbOKSiwKqJDtUqmq_j4_A
 
 {
 "content":"new object after tokenizing",
