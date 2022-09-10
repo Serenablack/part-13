@@ -1,14 +1,15 @@
-# PUT http://localhost:3001/api/notes/1 
-# Content-Type: application/json 
+PUT http://localhost:3001/api/users/second 
+Content-Type: application/json 
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaXJkIiwiaWQiOjMsImlhdCI6MTY2MjgyNzg2NX0.Tu50Pt51a57Don8HQyN5Xwvhv0g-mS1bvZkn9RjjcCc
 
-# {
+{
 
-# "important": "false"
+"disabled": "true"
 
 
-# }
+}
 ###
-GET http://localhost:3001/api/notes/
+GET http://localhost:3001/api/users/
 
 ###
 post http://localhost:3001/api/notes/
@@ -40,24 +41,25 @@ post http://localhost:3001/api/users
 content-type:application/json
 
 {
-    "username": "geo",
-    "name": "12132",
-    "password": "secret"
+    "username": "third",
+    "name": "bravo",
+    "password": "secret",
+    "disabled":false
 }
 ###
 post http://localhost:3001/api/login
 content-type:application/json
 
 {
-    "username": "geo",
+    "username": "third",
     "password": "secret"
 }
 ###
 post http://localhost:3001/api/notes
 content-type:application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImdlbyIsImlkIjoyLCJpYXQiOjE2NjI2MzM3MDd9.lA5FEhqw89NiPOZ06lgmaAdbOKSiwKqJDtUqmq_j4_A
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZvcnRoIiwiaWQiOjQsImlhdCI6MTY2MjgwOTI1MX0.3SV8hRTDCQkL3aNpsvp4PX2FrFq9qVVLgk0YR1q9ThU
 
 {
-"content":"new object after tokenizing",
+"content":"object 2",
 "important":"false"
 }

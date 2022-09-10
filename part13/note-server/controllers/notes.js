@@ -1,24 +1,10 @@
 const router = require("express").Router();
 
 const jwt = require("jsonwebtoken");
+const { tokenExtractor } = require("../utils/middleware");
 const { Note, User } = require("../models");
 const { SECRET } = require("../utils/config");
 
-const tokenExtractor = (req, res, next) => {
-  const authorization = req.get("authorization");
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    console.log("eheadd");
-    try {
-      req.decodedToken = jwt.verify(authorization.substring(7), SECRET);
-    } catch {
-      console.log("on catch");
-      res.status(401).json({ error: "token invalid" });
-    }
-  } else {
-    res.status(401).json({ error: "token missing" });
-  }
-  next();
-};
 const noteFinder = async (req, res, next) => {
   req.note = await Note.findByPk(req.params.id);
   next();

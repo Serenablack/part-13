@@ -1,1 +1,4 @@
-select * from notes
+
+update users 
+set disabled=false
+where id=3;
