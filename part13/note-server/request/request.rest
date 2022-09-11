@@ -41,10 +41,10 @@ post http://localhost:3001/api/users
 content-type:application/json
 
 {
-    "username": "third",
+    "username": "second",
     "name": "bravo",
     "password": "secret",
-    "disabled":false
+    "disabled":true
 }
 ###
 post http://localhost:3001/api/login
@@ -57,9 +57,9 @@ content-type:application/json
 ###
 post http://localhost:3001/api/notes
 content-type:application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZvcnRoIiwiaWQiOjQsImlhdCI6MTY2MjgwOTI1MX0.3SV8hRTDCQkL3aNpsvp4PX2FrFq9qVVLgk0YR1q9ThU
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRoaXJkIiwiaWQiOjEsImlhdCI6MTY2Mjg2ODgyN30.XkbhpLmk2rOejjYVn897p1EVac5e4XNxlINw7ktibRs
 
 {
-"content":"object 2",
+"content":"note 2 by third",
 "important":"false"
 }
